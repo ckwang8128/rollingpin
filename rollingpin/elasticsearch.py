@@ -1,3 +1,4 @@
+"""Reports deploy metadata to elasticsearch"""
 import getpass
 import json
 import logging
@@ -57,7 +58,7 @@ class ElasticSearchNotifier(object):
                 'POST',
                 self.endpoint,
                 Headers({'User-Agent': ['rollingpin']}),
-                body
+                body,
             )
 
     def deploy_start_doc(self):
@@ -70,7 +71,7 @@ class ElasticSearchNotifier(object):
             'command': self.command_line,
             'hosts': self.hosts,
             'host_count': len(self.hosts),
-            'event_type': 'deploy.begin'
+            'event_type': 'deploy.begin',
         }
 
     def deploy_abort_doc(self, reason):
