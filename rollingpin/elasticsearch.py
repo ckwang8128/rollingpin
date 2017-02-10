@@ -80,7 +80,7 @@ class ElasticSearchNotifier(object):
             'id': self.deploy_name,
             'timestamp': now,
             'reason': reason,
-            'event_type': 'deploy.abort'
+            'event_type': 'deploy.abort',
         }
 
     def deploy_end_doc(self):
@@ -88,7 +88,7 @@ class ElasticSearchNotifier(object):
         return {
             'id': self.deploy_name,
             'timestamp': now,
-            'event_type': 'deploy.end'
+            'event_type': 'deploy.end',
         }
 
     @inlineCallbacks
@@ -109,5 +109,5 @@ def enable_elastic_search_notifications(config, event_bus, components, hosts, co
     event_bus.register({
         "deploy.begin": notifier.on_deploy_start,
         "deploy.abort": notifier.on_deploy_abort,
-        "deploy.end": notifier.on_deploy_end
+        "deploy.end": notifier.on_deploy_end,
     })
